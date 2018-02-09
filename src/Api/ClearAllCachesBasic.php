@@ -10,18 +10,18 @@ use Psr\Container\ContainerInterface;
 class ClearAllCachesBasic implements ClearAllCaches
 {
     protected $serviceContainer;
-    protected $zrcmsCachesConfig;
+    protected $cachesConfig;
 
     /**
      * @param ContainerInterface $serviceContainer
-     * @param array              $zrcmsCachesConfig
+     * @param array              $cachesConfig
      */
     public function __construct(
         $serviceContainer,
-        array $zrcmsCachesConfig
+        array $cachesConfig
     ) {
         $this->serviceContainer = $serviceContainer;
-        $this->zrcmsCachesConfig = $zrcmsCachesConfig;
+        $this->cachesConfig = $cachesConfig;
     }
 
     /**
@@ -36,7 +36,7 @@ class ClearAllCachesBasic implements ClearAllCaches
         $caches = (array)$this->getOption(
             $options,
             self::OPTION_ONLY_CACHES,
-            $this->zrcmsCachesConfig
+            $this->cachesConfig
         );
 
         $skipCaches = (array)$this->getOption(
