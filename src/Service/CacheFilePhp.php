@@ -162,7 +162,7 @@ class CacheFilePhp implements Cache
             return false;
         }
 
-        return (($ttl + $createdTime) > time());
+        return (time() > ($ttl + $createdTime));
     }
 
     /**
